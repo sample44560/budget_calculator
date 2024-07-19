@@ -1,24 +1,22 @@
-
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
-function Home(){
-  return(
+function Home() {
+  return (
     <div className="App">
-        <h1> Budget Calculator</h1>
-        {/* Select drop down here */}
+      <h1>Budget Calculator</h1>
+      {/* Select drop down here */}
     </div>
-  )
-
+  );
 }
 
 function App() {
-  return(
+  return (
     <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/home"></Navigate>}></Route>
-          <Route path="/home" element={<Home />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </Router>
   );
 }
