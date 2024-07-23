@@ -1,15 +1,15 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect , useState} from 'react';
 import axios from 'axios';
 
 function Home() {
-  // const [selectedValue, setSelectedValue] = useState('');
-  // const [options, setOptions] = useState([]);
+  const [selectedValue, setSelectedValue] = useState('');
+  const [options, setOptions] = useState([]);
   // const [setOptions] = useState([]);
-  // const [income, setIncome] = useState('');
-  // const [budget, setBudget] = useState({});
-  // const [selectedRule, setSelectedRule] = useState(null);
+  const [income, setIncome] = useState('');
+  const [budget, setBudget] = useState({});
+  const [selectedRule, setSelectedRule] = useState(null);
 
   useEffect(() => {
 
