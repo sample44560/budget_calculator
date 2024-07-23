@@ -1,20 +1,21 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 function Home() {
-  const [selectedValue, setSelectedValue] = useState('');
-  const [options, setOptions] = useState([]);
-  const [income, setIncome] = useState('');
-  const [budget, setBudget] = useState({});
-  const [selectedRule, setSelectedRule] = useState(null);
+  // const [selectedValue, setSelectedValue] = useState('');
+  // const [options, setOptions] = useState([]);
+  // const [setOptions] = useState([]);
+  // const [income, setIncome] = useState('');
+  // const [budget, setBudget] = useState({});
+  // const [selectedRule, setSelectedRule] = useState(null);
 
   useEffect(() => {
 
     axios.get('https://lloyd44560.pythonanywhere.com/api/rules/')
       .then(response => {
-        setOptions(response.data);
+        // setOptions(response.data);
         console.log(response.data, "Options")
       })
       .catch(error => {
@@ -22,37 +23,37 @@ function Home() {
       });
   }, []);
 
-  const handleSelectChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setSelectedValue(event.target.value);
+  // };
 
-  const handleIncomeChange = (event) => {
-    setIncome(event.target.value);
-  };
+  // const handleIncomeChange = (event) => {
+  //   setIncome(event.target.value);
+  // };
 
-  const calculateBudget = () => {
-    const rule = options.find(option => option.id === parseInt(selectedValue));
-    setSelectedRule(rule);
-    if (rule && income) {
-      const budget = {
-        category1: (income * rule.percentage1) / 100,
-        category2: (income * rule.percentage2) / 100,
-        category3: rule.percentage3 ? (income * rule.percentage3) / 100 : 0
-      };
-      setBudget(budget);
-    } else {
-      setBudget({});
-    }
-  };
+  // const calculateBudget = () => {
+  //   const rule = options.find(option => option.id === parseInt(selectedValue));
+  //   setSelectedRule(rule);
+  //   if (rule && income) {
+  //     const budget = {
+  //       category1: (income * rule.percentage1) / 100,
+  //       category2: (income * rule.percentage2) / 100,
+  //       category3: rule.percentage3 ? (income * rule.percentage3) / 100 : 0
+  //     };
+  //     setBudget(budget);
+  //   } else {
+  //     setBudget({});
+  //   }
+  // };
 
-  useEffect(() => {
-    calculateBudget();
-  }, [selectedValue, income]);
+  // useEffect(() => {
+  //   calculateBudget();
+  // }, [selectedValue, income]);
 
   return (
     <div className="App">
       <h1>Budget Calculator</h1>
-
+{/* 
       <label>
         Choose a rule:
         <select value={selectedValue} onChange={handleSelectChange}>
@@ -77,7 +78,7 @@ function Home() {
             <p>Category 3: ${budget.category3 ? budget.category3.toFixed(2) : 'N/A'}</p>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
