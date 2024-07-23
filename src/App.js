@@ -7,15 +7,15 @@ function Home() {
   const [selectedValue, setSelectedValue] = useState('');
   const [options, setOptions] = useState([]);
   // const [setOptions] = useState([]);
-  const [income, setIncome] = useState('');
-  const [budget, setBudget] = useState({});
-  const [selectedRule, setSelectedRule] = useState(null);
+  // const [income, setIncome] = useState('');
+  // const [budget, setBudget] = useState({});
+  // const [selectedRule, setSelectedRule] = useState(null);
 
   useEffect(() => {
 
     axios.get('https://lloyd44560.pythonanywhere.com/api/rules/')
       .then(response => {
-        // setOptions(response.data);
+        setOptions(response.data);
         console.log(response.data, "Options")
       })
       .catch(error => {
@@ -23,9 +23,9 @@ function Home() {
       });
   }, []);
 
-  // const handleSelectChange = (event) => {
-  //   setSelectedValue(event.target.value);
-  // };
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   // const handleIncomeChange = (event) => {
   //   setIncome(event.target.value);
@@ -53,16 +53,20 @@ function Home() {
   return (
     <div className="App">
       <h1>Budget Calculator</h1>
-{/* 
-      <label>
-        Choose a rule:
-        <select value={selectedValue} onChange={handleSelectChange}>
-          <option value="">Select...</option>
-          {options.map(option => (
-            <option key={option.id} value={option.id}>{option.name}</option>
-          ))}
-        </select>
-      </label>
+{
+
+    <label>
+      Choose a rule:
+      <select value={selectedValue} onChange={handleSelectChange}>
+        <option value="">Select...</option>
+        {options.map(option => (
+          <option key={option.id} value={option.id}>{option.name}</option>
+        ))}
+      </select>
+    </label>
+
+/* 
+     
       <br />
       <label>
         Enter your monthly income:
